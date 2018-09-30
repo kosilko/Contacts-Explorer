@@ -1,0 +1,8 @@
+# visual studio files
+.vs
+*.pdb
+*.cache
+*TemporaryGeneratedFile*
+*.csproj.FileListAbsolute.txt
+*/bin/Debug/*
+*/obj/*
