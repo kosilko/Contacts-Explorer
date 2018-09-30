@@ -27,7 +27,7 @@ How to use:
   <br />
 &nbsp;&nbsp;&nbsp;&nbsp;NOTE: Do not use "%AppData%\Skype\main.db" in root of directory, it can be empty.
 <br />
- - For export to excel click "Save" in main menu.
+ - For export to excel click "Database-&gt;Save" in main menu.
   <br />
   <br />
 Screenshot: <br />
