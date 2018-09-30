@@ -15,7 +15,7 @@ Download binary: <a href="https://github.com/kosilko/Contacts-Explorer/raw/maste
 <br />
 How to use: 
 <br />
- - Select menu "Databeses" and click "Viber" or "Skype" button.
+ - Select menu "Databeses" and click "Viber" or "Skype" item.
 <br />
  - In browse dialog you must select an database file. 
 <br />
