@@ -10,5 +10,6 @@ Features:
 <br />
 Download binary: <a href="https://github.com/kosilko/Contacts-Explorer/raw/master/download/ContactsExplorer.zip">ContactsExplorer.zip</a>
 <br />
-Skreenshot: <br />
+<br />
+Screenshot: <br />
 <img src="https://github.com/kosilko/Contacts-Explorer/raw/master/download/screenshot.png"/>
