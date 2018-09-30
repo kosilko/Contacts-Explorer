@@ -3,11 +3,11 @@
 <br />
 Features:
 <br />
- - Read basic information about contacts: Name, type, avatar, phone number, last online time;
+ - Reads basic information about contacts: Name, type, avatar, phone number, last online time;
 <br />
- - Save avatar picture to file or copy to clipboard;
+ - Saves avatar picture to file or copy to clipboard;
 <br />
- - Export displayed list (as is) to excel.
+ - Exports displayed list (as is) to Excel.
 <br />
 <br />
 Download binary: <a href="https://github.com/kosilko/Contacts-Explorer/raw/master/download/ContactsExplorer.zip">ContactsExplorer.zip</a>
