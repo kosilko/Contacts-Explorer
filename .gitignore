@@ -5,6 +5,6 @@
 *.cache
 *TemporaryGeneratedFile*
 *.csproj.FileListAbsolute.txt
-*/bin/Debug/*
+*/bin/*
 */obj/*
 packages
