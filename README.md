@@ -28,6 +28,7 @@ How to use:
 &nbsp;&nbsp;&nbsp;&nbsp;NOTE: Do not use "%AppData%\Skype\main.db" in root of directory, it can be empty.
 <br />
  - Hint: you can load all databases into one list.
+ <br />
  - For export to excel click "Database-&gt;Save" in main menu.
   <br />
   <br />
