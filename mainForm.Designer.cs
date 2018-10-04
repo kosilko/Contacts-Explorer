@@ -34,6 +34,8 @@
       this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.listMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
       this.filterGroupBox = new System.Windows.Forms.GroupBox();
@@ -62,9 +64,8 @@
       this.pictureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.listMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-      this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).BeginInit();
+      this.listMenuStrip.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
       this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
@@ -73,7 +74,6 @@
       ((System.ComponentModel.ISupportInitialize)(this.contactPictureBox)).BeginInit();
       this.mainMenu.SuspendLayout();
       this.pictureMenuStrip.SuspendLayout();
-      this.listMenuStrip.SuspendLayout();
       this.SuspendLayout();
       // 
       // mainDataGrid
@@ -113,6 +113,7 @@
       this.mainDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.mainDataGrid.Size = new System.Drawing.Size(502, 500);
       this.mainDataGrid.TabIndex = 2;
+      this.mainDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDataGrid_CellMouseDown);
       this.mainDataGrid.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
       this.mainDataGrid.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
       this.mainDataGrid.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView1_SortCompare);
@@ -181,6 +182,21 @@
       this.timestamp.MinimumWidth = 70;
       this.timestamp.Name = "timestamp";
       this.timestamp.ReadOnly = true;
+      // 
+      // listMenuStrip
+      // 
+      this.listMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToClipboardToolStripMenuItem});
+      this.listMenuStrip.Name = "listMenuStrip";
+      this.listMenuStrip.Size = new System.Drawing.Size(159, 26);
+      this.listMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.listMenuStrip_Opening);
+      // 
+      // copyToClipboardToolStripMenuItem
+      // 
+      this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+      this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+      this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
+      this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
       // 
       // openFileDialog
       // 
@@ -429,21 +445,6 @@
       this.saveToolStripMenuItem.Text = "Save";
       this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
       // 
-      // listMenuStrip
-      // 
-      this.listMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToClipboardToolStripMenuItem});
-      this.listMenuStrip.Name = "listMenuStrip";
-      this.listMenuStrip.Size = new System.Drawing.Size(181, 48);
-      this.listMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.listMenuStrip_Opening);
-      // 
-      // copyToClipboardToolStripMenuItem
-      // 
-      this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
-      this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-      this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
-      this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
-      // 
       // mainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,6 +460,7 @@
       this.Text = "Contacts explorer";
       this.Load += new System.EventHandler(this.mainForm_Load);
       ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).EndInit();
+      this.listMenuStrip.ResumeLayout(false);
       this.splitContainer1.Panel1.ResumeLayout(false);
       this.splitContainer1.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -469,7 +471,6 @@
       this.mainMenu.ResumeLayout(false);
       this.mainMenu.PerformLayout();
       this.pictureMenuStrip.ResumeLayout(false);
-      this.listMenuStrip.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 

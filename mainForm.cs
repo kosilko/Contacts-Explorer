@@ -308,6 +308,9 @@ namespace ContactsExplorer {
         else {
           r.Visible = filterViber.Checked;
         }
+        if (!r.Visible && r.Selected) {
+          r.Selected = false;
+        }
       }
     }
 
@@ -367,6 +370,8 @@ namespace ContactsExplorer {
       filterAll.Checked = true;
     }
 
+
+
     private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e) {
 
       var rows = mainDataGrid.SelectedRows;
@@ -377,6 +382,10 @@ namespace ContactsExplorer {
 
     private void listMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
       copyToClipboardToolStripMenuItem.Enabled = mainDataGrid.SelectedRows.Count > 0;
+    }
+
+    private void mainDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+      mainDataGrid.Rows[e.RowIndex].Selected = true;
     }
   }
 }
