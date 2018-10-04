@@ -24,23 +24,24 @@
     /// </summary>
     private void InitializeComponent() {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.mainDataGrid = new System.Windows.Forms.DataGridView();
       this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.type = new System.Windows.Forms.DataGridViewImageColumn();
       this.image = new System.Windows.Forms.DataGridViewImageColumn();
       this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+      this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-      this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.filterGroupBox = new System.Windows.Forms.GroupBox();
       this.filterSkype = new System.Windows.Forms.CheckBox();
       this.filterViberAccounts = new System.Windows.Forms.CheckBox();
       this.filterViber = new System.Windows.Forms.CheckBox();
       this.filterAll = new System.Windows.Forms.CheckBox();
+      this.contactPictureBox = new System.Windows.Forms.PictureBox();
       this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
       this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
       this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -49,76 +50,79 @@
       this.addDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.viberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.skypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+      this.mainMenu = new System.Windows.Forms.MenuStrip();
       this.addDatabaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+      this.viberToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+      this.skypeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-      this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+      this.pictureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.pictureBox1 = new System.Windows.Forms.PictureBox();
-      this.viberToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-      this.skypeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      this.listMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
       this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
-      this.groupBox1.SuspendLayout();
-      this.menuStrip1.SuspendLayout();
-      this.contextMenuStrip1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+      this.filterGroupBox.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.contactPictureBox)).BeginInit();
+      this.mainMenu.SuspendLayout();
+      this.pictureMenuStrip.SuspendLayout();
+      this.listMenuStrip.SuspendLayout();
       this.SuspendLayout();
       // 
-      // dataGridView1
+      // mainDataGrid
       // 
-      this.dataGridView1.AllowUserToAddRows = false;
-      this.dataGridView1.AllowUserToDeleteRows = false;
-      this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.mainDataGrid.AllowUserToAddRows = false;
+      this.mainDataGrid.AllowUserToDeleteRows = false;
+      this.mainDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
-      this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-      this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-      this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+      this.mainDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
+      this.mainDataGrid.BackgroundColor = System.Drawing.SystemColors.Window;
+      this.mainDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.mainDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+      this.mainDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+      this.mainDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
             this.type,
             this.image,
             this.name,
             this.phone,
             this.timestamp});
-      this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-      this.dataGridView1.MultiSelect = false;
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.ReadOnly = true;
-      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-      dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-      this.dataGridView1.RowHeadersVisible = false;
-      this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-      this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dataGridView1.Size = new System.Drawing.Size(502, 500);
-      this.dataGridView1.TabIndex = 2;
-      this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-      this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-      this.dataGridView1.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView1_SortCompare);
-      this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
+      this.mainDataGrid.ContextMenuStrip = this.listMenuStrip;
+      this.mainDataGrid.Location = new System.Drawing.Point(0, 0);
+      this.mainDataGrid.MultiSelect = false;
+      this.mainDataGrid.Name = "mainDataGrid";
+      this.mainDataGrid.ReadOnly = true;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.mainDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+      this.mainDataGrid.RowHeadersVisible = false;
+      this.mainDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      this.mainDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.mainDataGrid.Size = new System.Drawing.Size(502, 500);
+      this.mainDataGrid.TabIndex = 2;
+      this.mainDataGrid.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+      this.mainDataGrid.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+      this.mainDataGrid.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView1_SortCompare);
+      this.mainDataGrid.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
       // 
       // num
       // 
       this.num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.num.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.num.DefaultCellStyle = dataGridViewCellStyle1;
       this.num.HeaderText = "#";
       this.num.MinimumWidth = 20;
       this.num.Name = "num";
@@ -178,12 +182,12 @@
       this.timestamp.Name = "timestamp";
       this.timestamp.ReadOnly = true;
       // 
-      // openFileDialog1
+      // openFileDialog
       // 
-      this.openFileDialog1.CheckFileExists = false;
-      this.openFileDialog1.CheckPathExists = false;
-      this.openFileDialog1.FileName = "viber.db";
-      this.openFileDialog1.Filter = "SQLite database|*.db";
+      this.openFileDialog.CheckFileExists = false;
+      this.openFileDialog.CheckPathExists = false;
+      this.openFileDialog.FileName = "viber.db";
+      this.openFileDialog.Filter = "SQLite database|*.db";
       // 
       // splitContainer1
       // 
@@ -193,33 +197,33 @@
       // 
       // splitContainer1.Panel1
       // 
-      this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-      this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+      this.splitContainer1.Panel1.Controls.Add(this.filterGroupBox);
+      this.splitContainer1.Panel1.Controls.Add(this.mainDataGrid);
       this.splitContainer1.Panel1MinSize = 300;
       // 
       // splitContainer1.Panel2
       // 
       this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Window;
-      this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
+      this.splitContainer1.Panel2.Controls.Add(this.contactPictureBox);
       this.splitContainer1.Panel2MinSize = 200;
       this.splitContainer1.Size = new System.Drawing.Size(1061, 552);
       this.splitContainer1.SplitterDistance = 502;
       this.splitContainer1.SplitterWidth = 6;
       this.splitContainer1.TabIndex = 5;
       // 
-      // groupBox1
+      // filterGroupBox
       // 
-      this.groupBox1.Controls.Add(this.filterSkype);
-      this.groupBox1.Controls.Add(this.filterViberAccounts);
-      this.groupBox1.Controls.Add(this.filterViber);
-      this.groupBox1.Controls.Add(this.filterAll);
-      this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.groupBox1.Location = new System.Drawing.Point(0, 506);
-      this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(502, 46);
-      this.groupBox1.TabIndex = 4;
-      this.groupBox1.TabStop = false;
-      this.groupBox1.Text = "Filter";
+      this.filterGroupBox.Controls.Add(this.filterSkype);
+      this.filterGroupBox.Controls.Add(this.filterViberAccounts);
+      this.filterGroupBox.Controls.Add(this.filterViber);
+      this.filterGroupBox.Controls.Add(this.filterAll);
+      this.filterGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.filterGroupBox.Location = new System.Drawing.Point(0, 506);
+      this.filterGroupBox.Name = "filterGroupBox";
+      this.filterGroupBox.Size = new System.Drawing.Size(502, 46);
+      this.filterGroupBox.TabIndex = 4;
+      this.filterGroupBox.TabStop = false;
+      this.filterGroupBox.Text = "Filter";
       // 
       // filterSkype
       // 
@@ -264,6 +268,18 @@
       this.filterAll.Text = "All";
       this.filterAll.UseVisualStyleBackColor = true;
       this.filterAll.CheckedChanged += new System.EventHandler(this.filterAll_CheckedChanged);
+      // 
+      // contactPictureBox
+      // 
+      this.contactPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.contactPictureBox.Location = new System.Drawing.Point(0, 0);
+      this.contactPictureBox.Name = "contactPictureBox";
+      this.contactPictureBox.Size = new System.Drawing.Size(553, 552);
+      this.contactPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+      this.contactPictureBox.TabIndex = 3;
+      this.contactPictureBox.TabStop = false;
+      this.contactPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
+      this.contactPictureBox.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
       // 
       // BottomToolStripPanel
       // 
@@ -319,18 +335,18 @@
       this.skypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
       this.skypeToolStripMenuItem.Text = "Skype";
       // 
-      // menuStrip1
+      // mainMenu
       // 
-      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addDatabaseToolStripMenuItem1,
             this.aboutToolStripMenuItem});
-      this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-      this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-      this.menuStrip1.Size = new System.Drawing.Size(1061, 24);
-      this.menuStrip1.TabIndex = 6;
-      this.menuStrip1.Text = "menuStrip1";
-      this.menuStrip1.MenuActivate += new System.EventHandler(this.menuStrip1_MenuActivate);
+      this.mainMenu.Location = new System.Drawing.Point(0, 0);
+      this.mainMenu.Name = "mainMenu";
+      this.mainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+      this.mainMenu.Size = new System.Drawing.Size(1061, 24);
+      this.mainMenu.TabIndex = 6;
+      this.mainMenu.Text = "menuStrip1";
+      this.mainMenu.MenuActivate += new System.EventHandler(this.menuStrip1_MenuActivate);
       // 
       // addDatabaseToolStripMenuItem1
       // 
@@ -344,6 +360,22 @@
       this.addDatabaseToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
       this.addDatabaseToolStripMenuItem1.Text = "Database";
       this.addDatabaseToolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // viberToolStripMenuItem1
+      // 
+      this.viberToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("viberToolStripMenuItem1.Image")));
+      this.viberToolStripMenuItem1.Name = "viberToolStripMenuItem1";
+      this.viberToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+      this.viberToolStripMenuItem1.Text = "Viber";
+      this.viberToolStripMenuItem1.Click += new System.EventHandler(this.viberToolStripMenuItem_Click);
+      // 
+      // skypeToolStripMenuItem1
+      // 
+      this.skypeToolStripMenuItem1.Image = global::ContactsExplorer.Properties.Resources.skype;
+      this.skypeToolStripMenuItem1.Name = "skypeToolStripMenuItem1";
+      this.skypeToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+      this.skypeToolStripMenuItem1.Text = "Skype";
+      this.skypeToolStripMenuItem1.Click += new System.EventHandler(this.skypeToolStripMenuItem1_Click);
       // 
       // clearToolStripMenuItem
       // 
@@ -375,13 +407,13 @@
       this.aboutToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
       // 
-      // contextMenuStrip1
+      // pictureMenuStrip
       // 
-      this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.pictureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem,
             this.saveToolStripMenuItem});
-      this.contextMenuStrip1.Name = "contextMenuStrip1";
-      this.contextMenuStrip1.Size = new System.Drawing.Size(100, 48);
+      this.pictureMenuStrip.Name = "contextMenuStrip1";
+      this.pictureMenuStrip.Size = new System.Drawing.Size(100, 48);
       // 
       // copyToolStripMenuItem
       // 
@@ -397,33 +429,20 @@
       this.saveToolStripMenuItem.Text = "Save";
       this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
       // 
-      // pictureBox1
+      // listMenuStrip
       // 
-      this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(553, 552);
-      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-      this.pictureBox1.TabIndex = 3;
-      this.pictureBox1.TabStop = false;
-      this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-      this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+      this.listMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToClipboardToolStripMenuItem});
+      this.listMenuStrip.Name = "listMenuStrip";
+      this.listMenuStrip.Size = new System.Drawing.Size(181, 48);
+      this.listMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.listMenuStrip_Opening);
       // 
-      // viberToolStripMenuItem1
+      // copyToClipboardToolStripMenuItem
       // 
-      this.viberToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("viberToolStripMenuItem1.Image")));
-      this.viberToolStripMenuItem1.Name = "viberToolStripMenuItem1";
-      this.viberToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
-      this.viberToolStripMenuItem1.Text = "Viber";
-      this.viberToolStripMenuItem1.Click += new System.EventHandler(this.viberToolStripMenuItem_Click);
-      // 
-      // skypeToolStripMenuItem1
-      // 
-      this.skypeToolStripMenuItem1.Image = global::ContactsExplorer.Properties.Resources.skype;
-      this.skypeToolStripMenuItem1.Name = "skypeToolStripMenuItem1";
-      this.skypeToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
-      this.skypeToolStripMenuItem1.Text = "Skype";
-      this.skypeToolStripMenuItem1.Click += new System.EventHandler(this.skypeToolStripMenuItem1_Click);
+      this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+      this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
+      this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
       // 
       // mainForm
       // 
@@ -431,7 +450,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1061, 576);
       this.Controls.Add(this.splitContainer1);
-      this.Controls.Add(this.menuStrip1);
+      this.Controls.Add(this.mainMenu);
       this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MinimumSize = new System.Drawing.Size(700, 400);
@@ -439,17 +458,18 @@
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Contacts explorer";
       this.Load += new System.EventHandler(this.mainForm_Load);
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).EndInit();
       this.splitContainer1.Panel1.ResumeLayout(false);
       this.splitContainer1.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
       this.splitContainer1.ResumeLayout(false);
-      this.groupBox1.ResumeLayout(false);
-      this.groupBox1.PerformLayout();
-      this.menuStrip1.ResumeLayout(false);
-      this.menuStrip1.PerformLayout();
-      this.contextMenuStrip1.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+      this.filterGroupBox.ResumeLayout(false);
+      this.filterGroupBox.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.contactPictureBox)).EndInit();
+      this.mainMenu.ResumeLayout(false);
+      this.mainMenu.PerformLayout();
+      this.pictureMenuStrip.ResumeLayout(false);
+      this.listMenuStrip.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -457,9 +477,9 @@
 
     #endregion
 
-    private System.Windows.Forms.DataGridView dataGridView1;
-    private System.Windows.Forms.OpenFileDialog openFileDialog1;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.DataGridView mainDataGrid;
+    private System.Windows.Forms.OpenFileDialog openFileDialog;
+    private System.Windows.Forms.PictureBox contactPictureBox;
     private System.Windows.Forms.SplitContainer splitContainer1;
     private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
     private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
@@ -469,13 +489,13 @@
     private System.Windows.Forms.ToolStripMenuItem addDatabaseToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem viberToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem skypeToolStripMenuItem;
-    private System.Windows.Forms.MenuStrip menuStrip1;
+    private System.Windows.Forms.MenuStrip mainMenu;
     private System.Windows.Forms.ToolStripMenuItem addDatabaseToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem viberToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem skypeToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-    private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-    private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+    private System.Windows.Forms.SaveFileDialog saveFileDialog;
+    private System.Windows.Forms.ContextMenuStrip pictureMenuStrip;
     private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
@@ -487,11 +507,13 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn phone;
     private System.Windows.Forms.DataGridViewTextBoxColumn timestamp;
     private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
-    private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.GroupBox filterGroupBox;
     private System.Windows.Forms.CheckBox filterSkype;
     private System.Windows.Forms.CheckBox filterViberAccounts;
     private System.Windows.Forms.CheckBox filterViber;
     private System.Windows.Forms.CheckBox filterAll;
+    private System.Windows.Forms.ContextMenuStrip listMenuStrip;
+    private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
   }
 }
 
