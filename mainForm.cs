@@ -8,6 +8,7 @@ using System.IO;
 using System.Media;
 using System.Collections.Specialized;
 using System.Net;
+using System.Threading;
 
 namespace ContactsExplorer {
   public partial class mainForm: Form {
@@ -129,7 +130,7 @@ namespace ContactsExplorer {
         filterSkype.Checked = true;
       }
       Bitmap skypeIcon = Image.FromHbitmap(Properties.Resources.skype.GetHbitmap());
-      WebClient client = new System.Net.WebClient();
+      
       SQLiteConnection db = new SQLiteConnection(@"Data Source=" + dbFileName + ";Version=3;");
 
       db.Open();
@@ -148,8 +149,14 @@ namespace ContactsExplorer {
         (ava = record["avatar_url"]).Length > 0 ||
         (ava = record["avatar_url_new"]).Length > 0) {
           try {
-            mainDataGrid.Rows[i].Cells["image"].Value = 
-              new Bitmap(client.OpenRead(ava.Replace("&size=m", "&size=l").Replace("&returnDefaultImage=false", "&returnDefaultImage=true")));
+            var t = new Thread(() => {
+              WebClient client = new System.Net.WebClient();
+              var b = new Bitmap(client.OpenRead(ava.Replace("&size=m", "&size=l").Replace("&returnDefaultImage=false", "&returnDefaultImage=true")));
+              BeginInvoke((MethodInvoker)(() => { mainDataGrid.Rows[i].Cells["image"].Value = b; }));
+              client.Dispose();
+            });
+            t.Start();
+
           }
           catch { }
         }
@@ -165,7 +172,6 @@ namespace ContactsExplorer {
       }
       db.Close();
       db.Dispose();
-      client.Dispose();
       applyFilters();
     }
 
