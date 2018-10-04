@@ -145,20 +145,28 @@ namespace ContactsExplorer {
 
         string ava;
         if ((ava = record["avatar_hiresurl"]).Length > 0 ||
-        (ava = record["avatar_hiresurl_new"]).Length > 0 ||
-        (ava = record["avatar_url"]).Length > 0 ||
-        (ava = record["avatar_url_new"]).Length > 0) {
-          try {
-            var t = new Thread(() => {
-              WebClient client = new System.Net.WebClient();
-              var b = new Bitmap(client.OpenRead(ava.Replace("&size=m", "&size=l").Replace("&returnDefaultImage=false", "&returnDefaultImage=true")));
-              BeginInvoke((MethodInvoker)(() => { mainDataGrid.Rows[i].Cells["image"].Value = b; }));
+            (ava = record["avatar_hiresurl_new"]).Length > 0 ||
+            (ava = record["avatar_url"]).Length > 0 ||
+            (ava = record["avatar_url_new"]).Length > 0) {
+   
+          new Thread((object ava_url) => {
+            WebClient client = new WebClient();
+            try {
+              string _ava = ava_url.ToString().Replace("&size=m", "&size=l");
+              _ava = _ava.Replace("&returnDefaultImage=false", "&returnDefaultImage=true");
+              var stream = client.OpenRead(_ava);
+              var bmp = new Bitmap(stream);
+              BeginInvoke((MethodInvoker)(() => {
+                mainDataGrid.Rows[i].Cells["image"].Value = bmp;
+              }));
+            }
+            catch { }
+            finally {
               client.Dispose();
-            });
-            t.Start();
-
-          }
-          catch { }
+            }
+              
+          }).Start(ava);
+          
         }
 
         mainDataGrid.Rows[i].Cells["name"].Value = (record["fullname"].Length > 0 ? record["fullname"] : record["displayname"]) + " [" + record["skypename"] + "]";
