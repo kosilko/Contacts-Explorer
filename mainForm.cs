@@ -133,7 +133,7 @@ namespace ContactsExplorer {
       SQLiteConnection db = new SQLiteConnection(@"Data Source=" + dbFileName + ";Version=3;");
 
       db.Open();
-      var r = (new SQLiteCommand("select * from Contacts where type = 1;", db)).ExecuteReader();
+      var r = (new SQLiteCommand("select * from Contacts where type = 1 and isauthorized;", db)).ExecuteReader();
       while (r.Read()) {
         NameValueCollection record = r.GetValues();
         int i = dataGridView1.Rows.Add();
@@ -154,7 +154,7 @@ namespace ContactsExplorer {
           catch { }
         }
 
-        dataGridView1.Rows[i].Cells["name"].Value = record["fullname"].Length > 0 ? record["fullname"] : record["displayname"];
+        dataGridView1.Rows[i].Cells["name"].Value = (record["fullname"].Length > 0 ? record["fullname"] : record["displayname"]) + " [" + record["skypename"] + "]";
         dataGridView1.Rows[i].Cells["phone"].Value = record["phone_mobile"].Length > 0 ? record["phone_mobile"] : record["phone_home"].Length > 0 ? record["phone_home"] : record["phone_office"];
      
         double.TryParse(record["lastonline_timestamp"], out double ts);
