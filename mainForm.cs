@@ -381,11 +381,13 @@ namespace ContactsExplorer {
     }
 
     private void listMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-      copyToClipboardToolStripMenuItem.Enabled = mainDataGrid.SelectedRows.Count > 0;
+      e.Cancel = mainDataGrid.SelectedRows.Count < 1;
     }
 
     private void mainDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
-      mainDataGrid.Rows[e.RowIndex].Selected = true;
+      if (e.RowIndex >= 0) {
+        mainDataGrid.Rows[e.RowIndex].Selected = true;
+      }
     }
   }
 }
