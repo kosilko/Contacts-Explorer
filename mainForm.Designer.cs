@@ -24,8 +24,8 @@
     /// </summary>
     private void InitializeComponent() {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
       this.mainDataGrid = new System.Windows.Forms.DataGridView();
       this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,13 +57,13 @@
       this.viberToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.skypeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+      this.saveToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-      this.pictureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-      this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.pictureMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.copyPictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.savePictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).BeginInit();
       this.listMenuStrip.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -73,7 +73,7 @@
       this.filterGroupBox.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.contactPictureBox)).BeginInit();
       this.mainMenu.SuspendLayout();
-      this.pictureMenuStrip.SuspendLayout();
+      this.pictureMenu.SuspendLayout();
       this.SuspendLayout();
       // 
       // mainDataGrid
@@ -100,30 +100,30 @@
       this.mainDataGrid.MultiSelect = false;
       this.mainDataGrid.Name = "mainDataGrid";
       this.mainDataGrid.ReadOnly = true;
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.mainDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+      dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.mainDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
       this.mainDataGrid.RowHeadersVisible = false;
       this.mainDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
       this.mainDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.mainDataGrid.Size = new System.Drawing.Size(502, 500);
       this.mainDataGrid.TabIndex = 2;
       this.mainDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDataGrid_CellMouseDown);
-      this.mainDataGrid.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+      this.mainDataGrid.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.mainDataGrid_RowsAdded);
       this.mainDataGrid.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-      this.mainDataGrid.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView1_SortCompare);
-      this.mainDataGrid.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
+      this.mainDataGrid.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.mainDataGrid_SortCompare);
+      this.mainDataGrid.Sorted += new System.EventHandler(this.mainDataGrid_Sorted);
       // 
       // num
       // 
       this.num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.num.DefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.num.DefaultCellStyle = dataGridViewCellStyle3;
       this.num.HeaderText = "#";
       this.num.MinimumWidth = 20;
       this.num.Name = "num";
@@ -294,8 +294,8 @@
       this.contactPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
       this.contactPictureBox.TabIndex = 3;
       this.contactPictureBox.TabStop = false;
-      this.contactPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
-      this.contactPictureBox.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+      this.contactPictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+      this.contactPictureBox.MouseHover += new System.EventHandler(this.pictureBox_MouseHover);
       // 
       // BottomToolStripPanel
       // 
@@ -362,7 +362,7 @@
       this.mainMenu.Size = new System.Drawing.Size(1061, 24);
       this.mainMenu.TabIndex = 6;
       this.mainMenu.Text = "menuStrip1";
-      this.mainMenu.MenuActivate += new System.EventHandler(this.menuStrip1_MenuActivate);
+      this.mainMenu.MenuActivate += new System.EventHandler(this.menuStrip_MenuActivate);
       // 
       // addDatabaseToolStripMenuItem1
       // 
@@ -370,7 +370,7 @@
             this.viberToolStripMenuItem1,
             this.skypeToolStripMenuItem1,
             this.clearToolStripMenuItem,
-            this.saveToolStripMenuItem1,
+            this.saveToExcelToolStripMenuItem,
             this.exitToolStripMenuItem});
       this.addDatabaseToolStripMenuItem1.Name = "addDatabaseToolStripMenuItem1";
       this.addDatabaseToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
@@ -381,7 +381,7 @@
       // 
       this.viberToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("viberToolStripMenuItem1.Image")));
       this.viberToolStripMenuItem1.Name = "viberToolStripMenuItem1";
-      this.viberToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+      this.viberToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
       this.viberToolStripMenuItem1.Text = "Viber";
       this.viberToolStripMenuItem1.Click += new System.EventHandler(this.viberToolStripMenuItem_Click);
       // 
@@ -389,28 +389,28 @@
       // 
       this.skypeToolStripMenuItem1.Image = global::ContactsExplorer.Properties.Resources.skype;
       this.skypeToolStripMenuItem1.Name = "skypeToolStripMenuItem1";
-      this.skypeToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+      this.skypeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
       this.skypeToolStripMenuItem1.Text = "Skype";
       this.skypeToolStripMenuItem1.Click += new System.EventHandler(this.skypeToolStripMenuItem1_Click);
       // 
       // clearToolStripMenuItem
       // 
       this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-      this.clearToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+      this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
       this.clearToolStripMenuItem.Text = "Clear";
       this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
       // 
-      // saveToolStripMenuItem1
+      // saveToExcelToolStripMenuItem
       // 
-      this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-      this.saveToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
-      this.saveToolStripMenuItem1.Text = "Save";
-      this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
+      this.saveToExcelToolStripMenuItem.Name = "saveToExcelToolStripMenuItem";
+      this.saveToExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.saveToExcelToolStripMenuItem.Text = "Save";
+      this.saveToExcelToolStripMenuItem.Click += new System.EventHandler(this.saveToExcelToolStripMenuItem_Click);
       // 
       // exitToolStripMenuItem
       // 
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-      this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
       this.exitToolStripMenuItem.Text = "Exit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
       // 
@@ -423,27 +423,27 @@
       this.aboutToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
       // 
-      // pictureMenuStrip
+      // pictureMenu
       // 
-      this.pictureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToolStripMenuItem,
-            this.saveToolStripMenuItem});
-      this.pictureMenuStrip.Name = "contextMenuStrip1";
-      this.pictureMenuStrip.Size = new System.Drawing.Size(100, 48);
+      this.pictureMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyPictureToolStripMenuItem,
+            this.savePictureToolStripMenuItem});
+      this.pictureMenu.Name = "contextMenuStrip1";
+      this.pictureMenu.Size = new System.Drawing.Size(181, 70);
       // 
-      // copyToolStripMenuItem
+      // copyPictureToolStripMenuItem
       // 
-      this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-      this.copyToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-      this.copyToolStripMenuItem.Text = "Copy";
-      this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+      this.copyPictureToolStripMenuItem.Name = "copyPictureToolStripMenuItem";
+      this.copyPictureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.copyPictureToolStripMenuItem.Text = "Copy";
+      this.copyPictureToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
       // 
-      // saveToolStripMenuItem
+      // savePictureToolStripMenuItem
       // 
-      this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-      this.saveToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-      this.saveToolStripMenuItem.Text = "Save";
-      this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+      this.savePictureToolStripMenuItem.Name = "savePictureToolStripMenuItem";
+      this.savePictureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.savePictureToolStripMenuItem.Text = "Save";
+      this.savePictureToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
       // 
       // mainForm
       // 
@@ -470,7 +470,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.contactPictureBox)).EndInit();
       this.mainMenu.ResumeLayout(false);
       this.mainMenu.PerformLayout();
-      this.pictureMenuStrip.ResumeLayout(false);
+      this.pictureMenu.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -496,9 +496,9 @@
     private System.Windows.Forms.ToolStripMenuItem skypeToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     private System.Windows.Forms.SaveFileDialog saveFileDialog;
-    private System.Windows.Forms.ContextMenuStrip pictureMenuStrip;
-    private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+    private System.Windows.Forms.ContextMenuStrip pictureMenu;
+    private System.Windows.Forms.ToolStripMenuItem copyPictureToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem savePictureToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     private System.Windows.Forms.DataGridViewTextBoxColumn num;
@@ -507,7 +507,7 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn name;
     private System.Windows.Forms.DataGridViewTextBoxColumn phone;
     private System.Windows.Forms.DataGridViewTextBoxColumn timestamp;
-    private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem saveToExcelToolStripMenuItem;
     private System.Windows.Forms.GroupBox filterGroupBox;
     private System.Windows.Forms.CheckBox filterSkype;
     private System.Windows.Forms.CheckBox filterViberAccounts;

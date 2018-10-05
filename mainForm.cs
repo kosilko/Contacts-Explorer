@@ -22,7 +22,7 @@ namespace ContactsExplorer {
       if (mainDataGrid.SelectedRows.Count > 0) {
         var img = mainDataGrid.SelectedRows[0].Cells["image"].Value;
         if (img != null) {
-          contactPictureBox.ContextMenuStrip = pictureMenuStrip;
+          contactPictureBox.ContextMenuStrip = pictureMenu;
           contactPictureBox.Image = (Image)mainDataGrid.SelectedRows[0].Cells["image"].Value;
         }
         else {
@@ -44,7 +44,6 @@ namespace ContactsExplorer {
             var r = (new SQLiteCommand("select * from Accounts;", db)).ExecuteReader();
             var ids = new List<string> { r.GetValues()["ID"] };
             db.Close();
-            db.Dispose();
             var dir = System.IO.Directory.GetParent(openFileDialog.FileName).FullName;
             foreach (string id in ids) {
               processViberDB(dir + "\\" + id + "\\viber.db");
@@ -94,7 +93,8 @@ namespace ContactsExplorer {
 
         mainDataGrid.Rows[i].Cells["name"].Value = record["Name"] + (record["ClientName"] != "" ? " [" + record["ClientName"] + "]" : "");
         mainDataGrid.Rows[i].Cells["phone"].Value = record["Number"];
-        SQLiteDataReader r1 = (new SQLiteCommand("select * from Events where ContactID = " + record["ContactID"]  + " order by TimeStamp desc limit 1;", db)).ExecuteReader();
+        SQLiteDataReader r1 = new SQLiteCommand(string.Format("select * from Events where ContactID = {0} order by TimeStamp desc limit 1;", record["ContactID"]), db).ExecuteReader();
+
         double.TryParse(r1.GetValues()["TimeStamp"], out double ts);
         if (ts > 0) {
           mainDataGrid.Rows[i].Cells["timestamp"].Value = new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds((int)(ts / 1000)).ToString("yyyy.MM.dd, HH:mm:ss");
@@ -102,10 +102,6 @@ namespace ContactsExplorer {
       }
       mainDataGrid.ClearSelection();
       db.Close();
-
-
-      // end of work:
-      db.Dispose();
       applyFilters();
     }
 
@@ -113,8 +109,7 @@ namespace ContactsExplorer {
       openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Skype";
       openFileDialog.FileName = "main.db";
       if (openFileDialog.ShowDialog() == DialogResult.OK) {
-        string fn = System.IO.Path.GetFileName(openFileDialog.FileName);
-        if (fn == "main.db") {
+        if (Path.GetFileName(openFileDialog.FileName) == "main.db") {
           try {
             processSkypeDB(openFileDialog.FileName);
           }
@@ -134,14 +129,15 @@ namespace ContactsExplorer {
       SQLiteConnection db = new SQLiteConnection(@"Data Source=" + dbFileName + ";Version=3;");
 
       db.Open();
-      var r = (new SQLiteCommand("select * from Contacts where type = 1 and isauthorized;", db)).ExecuteReader();
+      SQLiteDataReader r = (new SQLiteCommand("select * from Contacts where type = 1 and isauthorized;", db)).ExecuteReader();
       while (r.Read()) {
         NameValueCollection record = r.GetValues();
         int i = mainDataGrid.Rows.Add();
-        mainDataGrid.Rows[i].Cells["num"].Value = i + 1;
         mainDataGrid.Rows[i].Tag = "skype";
-        mainDataGrid.Rows[i].Cells["type"].Value = skypeIcon;
-        mainDataGrid.Rows[i].Cells["type"].Tag = "0";
+        DataGridViewCellCollection cells = mainDataGrid.Rows[i].Cells;
+        cells["num"].Value = i + 1;
+        cells["type"].Value = skypeIcon;
+        cells["type"].Tag = "0";
 
         string ava;
         if ((ava = record["avatar_hiresurl"]).Length > 0 ||
@@ -154,10 +150,10 @@ namespace ContactsExplorer {
             try {
               string _ava = ava_url.ToString().Replace("&size=m", "&size=l");
               _ava = _ava.Replace("&returnDefaultImage=false", "&returnDefaultImage=true");
-              var stream = client.OpenRead(_ava);
-              var bmp = new Bitmap(stream);
+              Stream stream = client.OpenRead(_ava);
+              Bitmap bmp = new Bitmap(stream);
               BeginInvoke((MethodInvoker)(() => {
-                mainDataGrid.Rows[i].Cells["image"].Value = bmp;
+                cells["image"].Value = bmp;
               }));
             }
             catch { }
@@ -169,17 +165,15 @@ namespace ContactsExplorer {
           
         }
 
-        mainDataGrid.Rows[i].Cells["name"].Value = (record["fullname"].Length > 0 ? record["fullname"] : record["displayname"]) + " [" + record["skypename"] + "]";
-        mainDataGrid.Rows[i].Cells["phone"].Value = record["phone_mobile"].Length > 0 ? record["phone_mobile"] : record["phone_home"].Length > 0 ? record["phone_home"] : record["phone_office"];
-     
+        cells["name"].Value = (record["fullname"].Length > 0 ? record["fullname"] : record["displayname"]) + " [" + record["skypename"] + "]";
+        cells["phone"].Value = record["phone_mobile"].Length > 0 ? record["phone_mobile"] : record["phone_home"].Length > 0 ? record["phone_home"] : record["phone_office"];
         double.TryParse(record["lastonline_timestamp"], out double ts);
         if (ts > 0) {
-          mainDataGrid.Rows[i].Cells["timestamp"].Value = new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds((int)(ts)).ToString("yyyy.MM.dd, HH:mm:ss");
+          cells["timestamp"].Value = new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds((int)(ts)).ToString("yyyy.MM.dd, HH:mm:ss");
         }
-
       }
+      mainDataGrid.ClearSelection();
       db.Close();
-      db.Dispose();
       applyFilters();
     }
 
@@ -187,7 +181,7 @@ namespace ContactsExplorer {
       MessageBox.Show("Contacts Explorer v 1.0", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
-    private void pictureBox1_Click(object sender, EventArgs e) {
+    private void pictureBox_Click(object sender, EventArgs e) {
       if (contactPictureBox.Image != null) {
         saveFileDialog.FileName = mainDataGrid.SelectedRows[0].Tag + " " + mainDataGrid.SelectedRows[0].Cells["name"].Value + ", " + mainDataGrid.SelectedRows[0].Cells["phone"].Value + ".jpg";
         if (saveFileDialog.ShowDialog() == DialogResult.OK) {
@@ -196,12 +190,12 @@ namespace ContactsExplorer {
       }
     }
 
-    private void pictureBox1_MouseHover(object sender, EventArgs e) {
+    private void pictureBox_MouseHover(object sender, EventArgs e) {
       contactPictureBox.Cursor = contactPictureBox.Image != null ? Cursors.Hand : Cursors.Default;
     }
 
     private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
-      pictureBox1_Click(sender, e);
+      pictureBox_Click(sender, e);
     }
 
     private void copyToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -218,17 +212,17 @@ namespace ContactsExplorer {
       Application.Exit();
     }
 
-    private void dataGridView1_Sorted(object sender, EventArgs e) {
+    private void mainDataGrid_Sorted(object sender, EventArgs e) {
       foreach (DataGridViewRow row in mainDataGrid.Rows) {
         row.DefaultCellStyle.BackColor = row.Index%2 == 0 ? Color.FromArgb(255, 255, 230) : Color.FromArgb(255, 230, 255);
       }
     }
 
-    private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
-      dataGridView1_Sorted(sender, e);
+    private void mainDataGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
+      mainDataGrid_Sorted(sender, e);
     }
 
-    private void saveToolStripMenuItem1_Click(object sender, EventArgs e) {
+    private void saveToExcelToolStripMenuItem_Click(object sender, EventArgs e) {
       ExcelPackage package = new ExcelPackage();
       ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Contacts");
       foreach (DataGridViewColumn c in mainDataGrid.Columns) {
@@ -274,6 +268,7 @@ namespace ContactsExplorer {
             SystemSounds.Asterisk.Play();
             complete = true;
             if (MessageBox.Show("Open file " + saveDialog.FileName + "?", "Saved", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+              // Open file with associated program
               System.Diagnostics.Process.Start(saveDialog.FileName);
             }
           }
@@ -284,11 +279,11 @@ namespace ContactsExplorer {
       }
     }
 
-    private void menuStrip1_MenuActivate(object sender, EventArgs e) {
-      saveToolStripMenuItem1.Enabled = clearToolStripMenuItem.Enabled = mainDataGrid.Rows.Count > 0;
+    private void menuStrip_MenuActivate(object sender, EventArgs e) {
+      saveToExcelToolStripMenuItem.Enabled = clearToolStripMenuItem.Enabled = mainDataGrid.Rows.Count > 0;
     }
 
-    private void dataGridView1_SortCompare(object sender, DataGridViewSortCompareEventArgs e) {
+    private void mainDataGrid_SortCompare(object sender, DataGridViewSortCompareEventArgs e) {
       if (e.Column.Name == "type") {
         DataGridViewRow row1 = ((DataGridView)(sender)).Rows[e.RowIndex1];
         DataGridViewRow row2 = ((DataGridView)(sender)).Rows[e.RowIndex2];       
